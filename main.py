@@ -11,6 +11,7 @@ import shutil
 import glob
 from fabric.api import env
 from fabric.operations import put
+from fabric.main import load_settings
 
 def run(files=None):
     if files is None:
@@ -37,6 +38,8 @@ def main():
                         help='Set file or directory of files to push to watch.')
     args = parser.parse_args()
 
+    #env.rcfile = "fabricrc"
+    #env.update(load_settings(env.rcfile))
     env.host_string = "atheuz@ourea.feralhosting.com"
     env.key_filename = [r"feralhosting_private.ppk"]
 
