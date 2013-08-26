@@ -7,6 +7,7 @@
 
 import argparse
 import os
+import sys
 import shutil
 import glob
 from fabric.api import env
@@ -38,10 +39,8 @@ def main():
                         help='Set file or directory of files to push to watch.')
     args = parser.parse_args()
 
-    #env.rcfile = "fabricrc"
-    #env.update(load_settings(env.rcfile))
-    env.host_string = "atheuz@ourea.feralhosting.com"
-    env.key_filename = [r"feralhosting_private.ppk"]
+    env.rcfile = "fabricrc"
+    env.update(load_settings(env.rcfile))
 
     if not os.path.isdir("watch"):
         os.mkdir("watch")
