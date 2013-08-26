@@ -3,7 +3,7 @@
 # Filename      main.py
 # Author        Lasse Vang Gravesen <gravesenlasse@gmail.com>
 # First edited  26-08-2013 04:13
-# Last edited   26-08-2013 04:41
+# Last edited   26-08-2013 04:48
 
 import argparse
 import os
@@ -40,6 +40,11 @@ def main():
     env.host_string = "atheuz@ourea.feralhosting.com"
     env.key_filename = [r"feralhosting_private.ppk"]
 
+    if not os.path.isdir("watch"):
+        os.mkdir("watch")
+    if not os.path.isdir("archive"):
+        os.mkdir("archive")
+    
     if args.files:
         run(files=args.files)
     else:
