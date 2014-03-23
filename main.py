@@ -24,7 +24,10 @@ def run(files=None):
     else:
         for i in files:
             if os.path.isfile(i) and os.path.splitext(i)[1] == ".torrent":
-                put(i, "private/deluge/watch")
+                if "[" in i or "]" in i:
+                    put(i, "private/deluge/watch", use_glob=False)
+                else:
+                    put(i, "private/deluge/watch")
                 # Don't want to mess with files outside of the watch dir, so we copy instead.
                 shutil.copy(i, "archive")
             elif os.path.isdir(i):
